@@ -45,6 +45,8 @@ int main() {
         #pragma omp parallel for reduction(+:result)
         for (int i = 0; i < N; i++) {
             if (A[i] != 1) {
+                /*#pragma omp atomic*/
+                #pragma omp atomic
                 result += calculateFunction(A[i], B[i], C[i]);
             }
         }
